@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      text-align: center;
+    }
+    input[type="text"] {
+      padding: 10px;
+      width: 70%;
+      font-size: 16px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 20px;
+    }
+    li {
+      padding: 10px;
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #ddd;
+    }
+    li.completed span {
+      text-decoration: line-through;
+      color: gray;
+    }
+    .delete-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  <input type="text" id="todo-input" placeholder="Add a new task...">
+  <button id="add-btn">Add</button>
+
+  <ul id="todo-list"></ul>
+
+  <script>
+    // Select elements
+const input = document.getElementById('todo-input');
+const addBtn = document.getElementById('add-btn');
+const todoList = document.getElementById('todo-list');
+
+// Load todos from localStorage or initialize empty array
+let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+// Save todos to localStorage
+function saveTodos() {
+  localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+// Render todos
+function renderTodos() {
+  todoList.innerHTML = '';
+  todos.forEach((todo, index) => {
+    const li = document.createElement('li');
+    li.className = todo.completed ? 'completed' : '';
+
+    const span = document.createElement('span');
+    span.textContent = todo.text;
+    span.addEventListener('click', () => toggleComplete(index));
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.className = 'delete-btn';
+    deleteBtn.addEventListener('click', () => deleteTodo(index));
+
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    todoList.appendChild(li);
+  });
+}
+
+// Add new todo
+function addTodo() {
+  const text = input.value.trim();
+  if (text === '') return;
+  todos.push({ text, completed: false });
+  input.value = '';
+  saveTodos();
+  renderTodos();
+}
+
+// Toggle completed
+function toggleComplete(index) {
+  todos[index].completed = !todos[index].completed;
+  saveTodos();
+  renderTodos();
+}
+
+// Delete todo
+function deleteTodo(index) {
+  todos.splice(index, 1);
+  saveTodos();
+  renderTodos();
+}
+
+// Event listener
+addBtn.addEventListener('click', addTodo);
+input.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') addTodo();
+});
+
+// Initial render
+renderTodos();
+  </script>
+</body>
+</html>
