@@ -1,0 +1,106 @@
+* {
+  font-family: "Times New Roman", Times, serif;
+}
+
+body {
+  margin: 0;
+  background-image: linear-gradient(
+    rgb(245, 207, 135),
+    rgb(241, 241, 149),
+    rgb(158, 233, 158)
+  );
+}
+
+.about {
+  color: white;
+}
+
+h1 {
+  font-weight: bolder;
+  color: black;
+  font-size: 350%;
+  text-align: center;
+}
+
+#img {
+  display: flex;
+  width: 35%;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  border-style: solid;
+  border-width: 4px;
+}
+
+#role {
+  font-weight: bolder;
+  font-size: 200%;
+  font-style: italic;
+  text-align: center;
+}
+
+#navigation {
+  display: flex;
+  justify-content: space-around;
+  font-weight: bolder;
+  font-size: 150%;
+  font-style: italic;
+  text-align: center;
+}
+
+#about,
+#projects,
+#contact {
+  background-color: #2a2314;
+  color: white;
+  font-weight: bolder;
+  font-size: 150%;
+  font-style: italic;
+  text-decoration-line: underline;
+}
+
+.aboutme {
+  background-image: linear-gradient(rgb(124, 122, 113), black);
+  font-size: medium;
+  border-style: double;
+  border-width: 3px;
+  border-color: black;
+  padding: 10px;
+}
+
+.myprojects {
+  background-image: linear-gradient(rgb(124, 122, 113), black);
+  font-size: medium;
+  color: white;
+  border-style: double;
+  border-width: 3px;
+  border-color: black;
+  padding: 10px;
+}
+
+.contact {
+  background-image: linear-gradient(rgb(124, 122, 113), black);
+  font-size: medium;
+  color: white;
+  border-style: double;
+  border-width: 3px;
+  border-color: black;
+  padding: 10px;
+}
+
+footer {
+  background-image: linear-gradient(rgb(64, 62, 53), white);
+  font-size: medium;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+.foot_a a {
+  text-decoration: none;
+  color: white;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+  padding: 4px;
+  margin-right: 6px;
+}

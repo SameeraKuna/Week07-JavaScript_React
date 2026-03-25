@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spread and Rest Operators Demo</title>
+</head>
+<body>
+
+  <h2>Spread-Rest Operators</h2>
+
+  <p><strong>Merged Array:</strong> <span id="output"></span></p>
+  <p><strong>Sum using Rest Function:</strong> <span id="sumOutput"></span></p>
+
+  <script>
+    const arr1 = [1, 2, 3];
+    const arr2 = [4, 5, 6];
+
+    const mergedArray = [...arr1, ...arr2];
+
+    //Merged array
+    document.getElementById("output").textContent = mergedArray.join(", ");
+
+    //Rest Operator
+    function sumAll(...numbers) {
+      let sum = 0;
+      for (let num of numbers) {
+        sum += num;
+      }
+      return sum;
+    }
+
+    // Call rest function
+    const result = sumAll(10, 20, 30, 40);
+
+    // Display result
+    document.getElementById("sumOutput").textContent = result;
+  </script>
+
+</body>
+</html>
